@@ -2,6 +2,7 @@ package com.generation.blogpessoal.model;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -25,6 +26,7 @@ public class Usuario {
 	@NotNull(message = "O atributo Nome é obrigatorio!")
 	private String nome;
 
+	@Schema(example = "email@email.com.br")
 	@NotNull(message = "O atributo Usuário é obrigatorio!")
 	@Email(message = "O atributo Nome é obrigatorio!")
 	private String usuario;
@@ -38,7 +40,6 @@ public class Usuario {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	private List<Postagens> postagem;
-	
 	
 
 	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
